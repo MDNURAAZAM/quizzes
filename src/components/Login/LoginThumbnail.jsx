@@ -1,10 +1,12 @@
 import React from "react";
+import Logo from "../../assets/logo-white.svg";
 import LoginImage from "../../assets/Saly-1.png";
 
-const LoginLeftSide = () => {
+const LoginThumbnail = () => {
   return (
     <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col justify-between p-12 relative">
       <div className="text-white">
+        <img src={Logo} className="h-8" />
         <img src={LoginImage} alt="Illustration" className="mx-auto" />
 
         <h2 className="text-3xl font-bold mb-4">Sign in Now</h2>
@@ -20,4 +22,4 @@ const LoginLeftSide = () => {
   );
 };
 
-export default LoginLeftSide;
+export default LoginThumbnail;

@@ -1,13 +1,13 @@
 import React from "react";
-import LoginLeftSide from "./LoginLeftSide";
-import LoginRIghtSide from "./LoginRIghtSide";
+import LoginThumbnail from "./LoginThumbnail";
+import LoginForm from "./LoginForm";
 
 const Login = () => {
   return (
     <div className="bg-white text-gray-800 overflow-hidden">
       <div class="flex min-h-screen">
-        <LoginLeftSide />
-        <LoginRIghtSide />
+        <LoginThumbnail />
+        <LoginForm />
       </div>
     </div>
   );

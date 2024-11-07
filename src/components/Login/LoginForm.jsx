@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../../assets/logo.svg";
 
-const LoginRIghtSide = () => {
+const LoginForm = () => {
   return (
     <div className="w-full lg:w-1/2 flex items-center justify-center p-12">
       <div className="w-full max-w-md">
@@ -71,4 +71,4 @@ const LoginRIghtSide = () => {
   );
 };
 
-export default LoginRIghtSide;
+export default LoginForm;
