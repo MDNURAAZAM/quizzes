@@ -1,5 +1,7 @@
+import HomeContainer from "./components/Home/HomeContainer";
+
 function App() {
-  return <div>hello world</div>;
+  return <HomeContainer />;
 }
 
 export default App;
