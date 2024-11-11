@@ -9,6 +9,7 @@ import DashBoardPage from "./pages/DashBoardPage";
 import AdminPage from "./pages/AdminPage";
 import SetQuizPage from "./pages/SetQuizPage";
 import SetQuizQuestionsPage from "./pages/SetQuizQuestionsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
       <Route path="/leaderboard" element={<LeaderBoardPage />} />
       <Route path="/quiz" element={<QuizPage />} />
       <Route path="/admin" element={<AdminPage />}>
-        <Route path="dashboard" element={<DashBoardPage />} />
+        <Route path="" element={<DashBoardPage />} />
         <Route path="set-quiz" element={<SetQuizPage />} />
         <Route path="set-quiz-questions" element={<SetQuizQuestionsPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
