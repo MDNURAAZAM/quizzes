@@ -24,7 +24,7 @@ const SetQuizEntry = () => {
             <form>
               <div className="mb-4">
                 <label
-                  for="quiz-title"
+                  htmlFor="quiz-title"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   Quiz title
@@ -40,7 +40,7 @@ const SetQuizEntry = () => {
 
               <div className="mb-6">
                 <label
-                  for="quiz-description"
+                  htmlFor="quiz-description"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   Description (Optional)

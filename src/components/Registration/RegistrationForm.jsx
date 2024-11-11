@@ -14,7 +14,7 @@ const RegistrationForm = () => {
         <form className="">
           <div className="">
             <div className="mb-4">
-              <label for="name" className="block mb-2">
+              <label htmlFor="name" className="block mb-2">
                 Full Name
               </label>
               <input
@@ -26,7 +26,7 @@ const RegistrationForm = () => {
             </div>
 
             <div className="mb-4">
-              <label for="email" className="block mb-2">
+              <label htmlFor="email" className="block mb-2">
                 Email
               </label>
               <input
@@ -40,7 +40,7 @@ const RegistrationForm = () => {
 
           <div className="flex  gap-4">
             <div className="mb-6">
-              <label for="password" className="block mb-2">
+              <label htmlFor="password" className="block mb-2">
                 Enter your Password
               </label>
               <input
@@ -52,7 +52,7 @@ const RegistrationForm = () => {
             </div>
 
             <div className="mb-6">
-              <label for="password" className="block mb-2">
+              <label htmlFor="password" className="block mb-2">
                 Confirm Password
               </label>
               <input
@@ -70,7 +70,7 @@ const RegistrationForm = () => {
               id="admin"
               className="px-4 py-3 rounded-lg border border-gray-300"
             />
-            <label for="admin" className="block ">
+            <label htmlFor="admin" className="block ">
               Register as Admin
             </label>
           </div>

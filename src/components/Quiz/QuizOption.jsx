@@ -7,7 +7,6 @@ const QuizOption = () => {
         type="checkbox"
         name="answer1"
         className="form-radio text-buzzr-purple"
-        checked
       />
       <span>0</span>
     </label>

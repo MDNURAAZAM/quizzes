@@ -17,7 +17,7 @@ const SetQuestionForm = () => {
 
         <div>
           <label
-            for="quizTitle"
+            htmlFor="quizTitle"
             className="block text-sm font-medium text-foreground mb-1"
           >
             Question Title
@@ -42,7 +42,7 @@ const SetQuestionForm = () => {
               value="0"
               className="text-primary focus:ring-0 w-4 h-4"
             />
-            <label for="option0" className="sr-only">
+            <label htmlFor="option0" className="sr-only">
               Option 1
             </label>
             <input
@@ -63,7 +63,7 @@ const SetQuestionForm = () => {
               value="0"
               className="text-primary focus:ring-0 w-4 h-4"
             />
-            <label for="option0" className="sr-only">
+            <label htmlFor="option0" className="sr-only">
               Option 2
             </label>
             <input
@@ -84,7 +84,7 @@ const SetQuestionForm = () => {
               value="0"
               className="text-primary focus:ring-0 w-4 h-4"
             />
-            <label for="option3" className="sr-only">
+            <label htmlFor="option3" className="sr-only">
               Option 3
             </label>
             <input
@@ -105,7 +105,7 @@ const SetQuestionForm = () => {
               value="0"
               className="text-primary focus:ring-0 w-4 h-4"
             />
-            <label for="option4" className="sr-only">
+            <label htmlFor="option4" className="sr-only">
               Option 4
             </label>
             <input

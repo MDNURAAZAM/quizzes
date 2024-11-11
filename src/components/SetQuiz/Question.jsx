@@ -15,7 +15,6 @@ const Question = () => {
               type="radio"
               name="answer1"
               className="form-radio text-buzzr-purple"
-              checked
             />
             <span>Inorder</span>
           </label>

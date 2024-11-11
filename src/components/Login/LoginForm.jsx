@@ -13,7 +13,7 @@ const LoginForm = () => {
 
         <form>
           <div className="mb-4">
-            <label for="username" className="block mb-2">
+            <label htmlFor="username" className="block mb-2">
               Enter your username or email address
             </label>
             <input
@@ -24,7 +24,7 @@ const LoginForm = () => {
             />
           </div>
           <div className="mb-6">
-            <label for="password" className="block mb-2">
+            <label htmlFor="password" className="block mb-2">
               Enter your Password
             </label>
             <input
@@ -40,7 +40,7 @@ const LoginForm = () => {
               id="admin"
               className="px-4 py-3 rounded-lg border border-gray-300"
             />
-            <label for="admin" className="block ">
+            <label htmlFor="admin" className="block ">
               Login as Admin
             </label>
           </div>

@@ -16,7 +16,6 @@ const QuestionItem = () => {
               type="radio"
               name="answer2"
               className="form-radio text-buzzr-purple"
-              checked
             />
             <span>2^L</span>
           </label>
