@@ -1,7 +1,7 @@
 import React from "react";
 import CreateSVG from "../SVGs/CreateSVG";
 
-const CreateQuiz = () => {
+const CreateQuizCard = () => {
   return (
     <div className="group">
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 ">
@@ -19,4 +19,4 @@ const CreateQuiz = () => {
   );
 };
 
-export default CreateQuiz;
+export default CreateQuizCard;

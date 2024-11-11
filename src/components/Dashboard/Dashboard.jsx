@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "./Sidebar";
-import CreateQuiz from "./CreateQuiz";
+import Sidebar from "../Sidebar/Sidebar";
+import CreateQuizCard from "./CreateQuizCard";
 import QuizCard from "./QuizCard";
 
 const Dashboard = () => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <CreateQuiz />
+          <CreateQuizCard />
           <QuizCard />
           <QuizCard />
           <QuizCard />
