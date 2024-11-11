@@ -4,7 +4,7 @@ export const apiSlice = createApi({
   reducerPath: "api",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "",
+    baseUrl: "http://localhost:5000",
   }),
 
   endpoints: () => ({}),
