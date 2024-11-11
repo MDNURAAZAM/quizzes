@@ -1,15 +1,31 @@
-import Dashboard from "./components/Dashboard/Dashboard";
-import HomeContainer from "./components/Home/HomeContainer";
-import LeaderBoardContainer from "./components/LeaderBoard/LeaderBoardContainer";
-import Login from "./components/Login/Login";
-import QuizContainer from "./components/Quiz/QuizContainer";
-import Registration from "./components/Registration/Registration";
-import ResultContainer from "./components/Result/ResultContainer";
-import SetQuizEntry from "./components/SetQuiz/SetQuizEntry";
-import SetQuizQuestions from "./components/SetQuiz/SetQuizQuestions";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
+import ResultPage from "./pages/ResultPage";
+import LeaderBoardPage from "./pages/LeaderBoardPage";
+import QuizPage from "./pages/QuizPage";
+import DashBoardPage from "./pages/DashBoardPage";
+import AdminPage from "./pages/AdminPage";
+import SetQuizPage from "./pages/SetQuizPage";
+import SetQuizQuestionsPage from "./pages/SetQuizQuestionsPage";
 
 function App() {
-  return <SetQuizQuestions />;
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/registration" element={<RegistrationPage />} />
+      <Route path="/result" element={<ResultPage />} />
+      <Route path="/leaderboard" element={<LeaderBoardPage />} />
+      <Route path="/quiz" element={<QuizPage />} />
+      <Route path="/admin" element={<AdminPage />}>
+        <Route path="dashboard" element={<DashBoardPage />} />
+        <Route path="set-quiz" element={<SetQuizPage />} />
+        <Route path="set-quiz-questions" element={<SetQuizQuestionsPage />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;
