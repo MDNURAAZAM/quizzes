@@ -14,6 +14,8 @@ import PublicRoute from "./components/PublicRoute/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import useAuthCheck from "./hooks/useAuthCheck";
 import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -22,85 +24,88 @@ function App() {
   return !authChecked ? (
     <div>Checking authentication....</div>
   ) : (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route
-        path="/login"
-        element={
-          <PublicRoute>
-            <LoginPage />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/registration"
-        element={
-          <PublicRoute>
-            <RegistrationPage />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/result"
-        element={
-          <PrivateRoute>
-            <ResultPage />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/leaderboard/:quizSetId"
-        element={
-          <PrivateRoute>
-            <LeaderBoardPage />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/quiz/:quizSetId"
-        element={
-          <PrivateRoute>
-            <QuizPage />
-          </PrivateRoute>
-        }
-      />
-      {isAdmin && (
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route
-          path="/admin"
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/registration"
+          element={
+            <PublicRoute>
+              <RegistrationPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/result"
           element={
             <PrivateRoute>
-              <AdminPage />
+              <ResultPage />
             </PrivateRoute>
           }
-        >
+        />
+        <Route
+          path="/leaderboard/:quizSetId"
+          element={
+            <PrivateRoute>
+              <LeaderBoardPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/quiz/:quizSetId"
+          element={
+            <PrivateRoute>
+              <QuizPage />
+            </PrivateRoute>
+          }
+        />
+        {isAdmin && (
           <Route
-            path=""
+            path="/admin"
             element={
               <PrivateRoute>
-                <DashBoardPage />
+                <AdminPage />
               </PrivateRoute>
             }
-          />
-          <Route
-            path="set-quiz"
-            element={
-              <PrivateRoute>
-                <SetQuizPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="set-quiz-questions"
-            element={
-              <PrivateRoute>
-                <SetQuizQuestionsPage />
-              </PrivateRoute>
-            }
-          />
-        </Route>
-      )}
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+          >
+            <Route
+              path=""
+              element={
+                <PrivateRoute>
+                  <DashBoardPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="set-quiz"
+              element={
+                <PrivateRoute>
+                  <SetQuizPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="set-quiz-questions"
+              element={
+                <PrivateRoute>
+                  <SetQuizQuestionsPage />
+                </PrivateRoute>
+              }
+            />
+          </Route>
+        )}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <ToastContainer autoClose={1000} position="bottom-right" />
+    </>
   );
 }
 

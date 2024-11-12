@@ -13,11 +13,13 @@ const baseQuery = fetchBaseQuery({
 });
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
+  //attempt the initial request
   let result = await baseQuery(args, api, extraOptions);
 
   // If the status is 401, try to refresh the token
   if (result?.error && result.error.status === 401) {
     const prevData = api?.getState()?.auth;
+
     // Attempt to refresh the token
     const refreshResult = await baseQuery(
       {
@@ -31,6 +33,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       extraOptions
     );
 
+    //check if refrsh was succesful
     if (refreshResult?.data) {
       const updatedAuth = {
         ...prevData,
