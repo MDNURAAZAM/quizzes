@@ -17,32 +17,37 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
   // If the status is 401, try to refresh the token
   if (result?.error && result.error.status === 401) {
+    const prevData = api?.getState()?.auth;
     // Attempt to refresh the token
     const refreshResult = await baseQuery(
       {
-        url: "/auth/refresh-token",
+        url: "/api/auth/refresh-token",
         method: "POST",
+        body: {
+          refreshToken: prevData?.refreshToken,
+        },
       },
       api,
       extraOptions
     );
 
-    const prevData = api?.getState()?.auth;
-
     if (refreshResult?.data) {
+      const updatedAuth = {
+        ...prevData,
+        accessToken: refreshResult?.data?.data?.accessToken,
+        refreshToken: refreshResult?.data?.data?.refreshToken,
+      };
+
       // Save the new token
-      api.dispatch(
-        userLoggedIn({
-          ...prevData,
-          accessToken: refreshResult.data.accessToken,
-        })
-      );
+      api.dispatch(userLoggedIn(updatedAuth));
+      localStorage.setItem("auth", JSON.stringify(updatedAuth));
 
       // Retry the original request with the new token
       result = await baseQuery(args, api, extraOptions);
     } else {
       // Refresh failed; clear the token and potentially redirect to login
       api.dispatch(userLoggedOut());
+      localStorage.removeItem("auth");
     }
   }
   return result;

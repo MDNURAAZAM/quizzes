@@ -4,10 +4,24 @@ import Header from "../Header/Header";
 import QuizSummary from "./QuizSummary";
 import QuizQuestions from "./QuizQuestions";
 import { useParams } from "react-router-dom";
+import { useGetQuizDetailsQuery } from "../../features/api/QuizTaking/quizTakingApi";
+import LoadingComponent from "../LoadingComponent/LoadingComponent";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 const QuizContainer = () => {
   const { quizSetId } = useParams();
-  console.log(quizSetId);
+  const { data, isLoading, isError, error } = useGetQuizDetailsQuery(
+    { quizSetId },
+    { skip: quizSetId?.length === 0 }
+  );
+
+  if (isLoading) {
+    return <LoadingComponent />;
+  }
+
+  if (isError) {
+    return <ErrorComponent message={error?.data?.message} />;
+  }
   return (
     <div className="bg-[#F5F3FF] min-h-screen">
       <div className="container mx-auto py-3">
