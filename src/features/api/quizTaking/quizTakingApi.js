@@ -3,12 +3,12 @@ import { apiSlice } from "../apiSlice";
 const baseUrl = "/api/quizzes";
 const quizTakingApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getQuizSet: builder.query({
+    getQuizDetails: builder.query({
       query: ({ quizSetId }) => ({
         url: `${baseUrl}/${quizSetId}`,
       }),
     }),
-    getQuizDetails: builder.query({
+    getQuizList: builder.query({
       query: () => ({
         url: baseUrl,
       }),
@@ -30,7 +30,7 @@ const quizTakingApi = apiSlice.injectEndpoints({
 
 export const {
   useGetQuizDetailsQuery,
-  useGetQuizSetQuery,
+  useGetQuizListQuery,
   useGetQuizAttemptsQuery,
   useSubmitQuizAttemptMutation,
 } = quizTakingApi;

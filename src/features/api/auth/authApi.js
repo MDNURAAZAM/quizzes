@@ -21,7 +21,7 @@ const authApi = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          const { data } = result || {};
+          const { data } = result?.data || {};
           const accessToken = data?.tokens?.accessToken;
           const refreshToken = data?.tokens?.refreshToken;
           const user = data?.user;

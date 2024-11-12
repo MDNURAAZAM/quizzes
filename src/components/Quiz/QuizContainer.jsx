@@ -3,8 +3,11 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import QuizSummary from "./QuizSummary";
 import QuizQuestions from "./QuizQuestions";
+import { useParams } from "react-router-dom";
 
 const QuizContainer = () => {
+  const { quizSetId } = useParams();
+  console.log(quizSetId);
   return (
     <div className="bg-[#F5F3FF] min-h-screen">
       <div className="container mx-auto py-3">

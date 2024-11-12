@@ -22,7 +22,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       {
         url: "/auth/refresh-token",
         method: "POST",
-        credentials: "include", // Send cookies if needed
       },
       api,
       extraOptions

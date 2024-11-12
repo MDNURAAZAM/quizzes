@@ -10,21 +10,95 @@ import AdminPage from "./pages/AdminPage";
 import SetQuizPage from "./pages/SetQuizPage";
 import SetQuizQuestionsPage from "./pages/SetQuizQuestionsPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import useAuthCheck from "./hooks/useAuthCheck";
+import { useSelector } from "react-redux";
 
 function App() {
-  return (
+  const authChecked = useAuthCheck();
+  const { user } = useSelector((state) => state.auth);
+  const isAdmin = user?.role === "admin";
+  return !authChecked ? (
+    <div>Checking authentication....</div>
+  ) : (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/registration" element={<RegistrationPage />} />
-      <Route path="/result" element={<ResultPage />} />
-      <Route path="/leaderboard" element={<LeaderBoardPage />} />
-      <Route path="/quiz" element={<QuizPage />} />
-      <Route path="/admin" element={<AdminPage />}>
-        <Route path="" element={<DashBoardPage />} />
-        <Route path="set-quiz" element={<SetQuizPage />} />
-        <Route path="set-quiz-questions" element={<SetQuizQuestionsPage />} />
-      </Route>
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/registration"
+        element={
+          <PublicRoute>
+            <RegistrationPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/result"
+        element={
+          <PrivateRoute>
+            <ResultPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/leaderboard/:quizSetId"
+        element={
+          <PrivateRoute>
+            <LeaderBoardPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/quiz/:quizSetId"
+        element={
+          <PrivateRoute>
+            <QuizPage />
+          </PrivateRoute>
+        }
+      />
+      {isAdmin && (
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <AdminPage />
+            </PrivateRoute>
+          }
+        >
+          <Route
+            path=""
+            element={
+              <PrivateRoute>
+                <DashBoardPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="set-quiz"
+            element={
+              <PrivateRoute>
+                <SetQuizPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="set-quiz-questions"
+            element={
+              <PrivateRoute>
+                <SetQuizQuestionsPage />
+              </PrivateRoute>
+            }
+          />
+        </Route>
+      )}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

@@ -2,8 +2,10 @@ import React from "react";
 import Header from "../Header/Header";
 import LeaderBoardProfile from "./LeaderBoardProfile";
 import LeaderBoardRankings from "./LeaderBoardRankings";
+import { useParams } from "react-router-dom";
 
 const LeaderBoardContainer = () => {
+  const { quizSetId } = useParams();
   return (
     <div className="bg-[#F5F3FF]  p-4">
       <Header />

@@ -1,7 +1,9 @@
 import React from "react";
 import Avatar from "../../assets/avater.webp";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const { user } = useSelector((state) => state.auth) || {};
   return (
     <div className="text-center mb-12">
       <img
@@ -14,7 +16,7 @@ const Profile = () => {
         className="text-4xl font-bold text-gray-700"
         style={{ fontFamily: "Jaro" }}
       >
-        Saad Hasan
+        {user?.full_name}
       </h2>
     </div>
   );

@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/logo.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginUserMutation } from "../../features/api/auth/authApi";
 
 const LoginForm = () => {
+  const [loginUser] = useLoginUserMutation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const navigate = useNavigate();
+
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+    setIsAdmin(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      email,
+      password,
+      role: isAdmin ? "admin" : "user",
+    };
+    loginUser({ formData })
+      .unwrap()
+      .then((data) => {
+        if (data) {
+          navigate("/");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="w-full lg:w-1/2 flex items-center justify-center p-12">
       <div className="w-full max-w-md">
@@ -11,12 +42,15 @@ const LoginForm = () => {
         </h2>
         <h1 className="text-5xl font-bold mb-8">Sign in</h1>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="username" className="block mb-2">
               Enter your username or email address
             </label>
             <input
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="text"
               id="username"
               className="w-full px-4 py-3 rounded-lg border border-gray-300"
@@ -28,6 +62,9 @@ const LoginForm = () => {
               Enter your Password
             </label>
             <input
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               id="password"
               className="w-full px-4 py-3 rounded-lg border border-gray-300"
@@ -36,6 +73,8 @@ const LoginForm = () => {
           </div>
           <div className="mb-6 flex gap-2 items-center">
             <input
+              checked={isAdmin}
+              onChange={(e) => setIsAdmin(e.target.checked)}
               type="checkbox"
               id="admin"
               className="px-4 py-3 rounded-lg border border-gray-300"
@@ -53,17 +92,17 @@ const LoginForm = () => {
         </form>
 
         <div className="text-center">
-          <a href="#" className="text-primary">
+          <button disabled={true} className="text-primary">
             Forgot Password
-          </a>
+          </button>
         </div>
 
         <div className="mt-8">
           <p className="text-center">
             No Account ?{" "}
-            <a href="#" className="text-primary">
+            <Link to={"/registration"} className="text-primary">
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
