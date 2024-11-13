@@ -8,22 +8,31 @@ const quizTakingApi = apiSlice.injectEndpoints({
         url: `${baseUrl}/${quizSetId}`,
       }),
     }),
+
     getQuizList: builder.query({
       query: () => ({
         url: baseUrl,
       }),
     }),
+
     getQuizAttempts: builder.query({
       query: ({ quizSetId }) => ({
         url: `${baseUrl}/${quizSetId}/attempts`,
       }),
+      providesTags: (_result, _error, arg) => [
+        { type: "quizAttempt", id: arg?.quizSetId },
+      ],
     }),
+
     submitQuizAttempt: builder.mutation({
-      query: ({ quizId, formData }) => ({
-        url: `${baseUrl}/${quizId}/attempt`,
+      query: ({ quizSetId, formData }) => ({
+        url: `${baseUrl}/${quizSetId}/attempt`,
         method: "POST",
         body: formData,
       }),
+      invalidatesTags: (_result, _error, arg) => [
+        { type: "quizAttempt", id: arg?.quizSetId },
+      ],
     }),
   }),
 });

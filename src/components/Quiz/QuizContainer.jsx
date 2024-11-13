@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import QuizSummary from "./QuizSummary";
@@ -7,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useGetQuizDetailsQuery } from "../../features/api/QuizTaking/quizTakingApi";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import { useState } from "react";
 
 const QuizContainer = () => {
   const { quizSetId } = useParams();
@@ -14,6 +14,11 @@ const QuizContainer = () => {
     { quizSetId },
     { skip: quizSetId?.length === 0 }
   );
+  const [answers, setAnswers] = useState({});
+
+  const answersParticipated = Object?.values(answers)?.filter(
+    (value) => value?.length > 0
+  )?.length;
 
   if (isLoading) {
     return <LoadingComponent />;
@@ -30,10 +35,14 @@ const QuizContainer = () => {
         <main className="max-w-8xl mx-auto h-[calc(100vh-10rem)]">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 h-full">
             {/* <!-- Left Column --> */}
-            <QuizSummary />
+            <QuizSummary data={data?.data} participated={answersParticipated} />
 
             {/* <!-- Right Column --> */}
-            <QuizQuestions />
+            <QuizQuestions
+              data={data?.data}
+              answers={answers}
+              setAnswers={setAnswers}
+            />
           </div>
         </main>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "../../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../features/api/auth/authApi";
@@ -11,7 +11,6 @@ const LoginForm = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
 
   const resetForm = () => {
@@ -37,7 +36,7 @@ const LoginForm = () => {
           navigate("/");
         }
       })
-      .catch((err) => setError("Invalid email or password"));
+      .catch(() => setError("Invalid email or password"));
   };
   return (
     <div className="w-full lg:w-1/2 flex items-center justify-center p-12">
