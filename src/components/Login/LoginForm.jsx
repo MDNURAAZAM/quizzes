@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import Logo from "../../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../features/api/auth/authApi";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [loginUser] = useLoginUserMutation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,6 +21,7 @@ const LoginForm = () => {
   };
 
   const handleSubmit = (e) => {
+    setError("");
     e.preventDefault();
     const formData = {
       email,
@@ -27,11 +31,13 @@ const LoginForm = () => {
     loginUser({ formData })
       .unwrap()
       .then((data) => {
-        if (data) {
+        if (data?.status === "success") {
+          resetForm();
+          toast.success("User logged in succesfully");
           navigate("/");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError("Invalid email or password"));
   };
   return (
     <div className="w-full lg:w-1/2 flex items-center justify-center p-12">
@@ -50,7 +56,10 @@ const LoginForm = () => {
             <input
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setError("");
+                setEmail(e.target.value);
+              }}
               type="text"
               id="username"
               className="w-full px-4 py-3 rounded-lg border border-gray-300"
@@ -64,13 +73,22 @@ const LoginForm = () => {
             <input
               required
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setError("");
+                setPassword(e.target.value);
+              }}
               type="password"
               id="password"
               className="w-full px-4 py-3 rounded-lg border border-gray-300"
               placeholder="Password"
             />
           </div>
+          {error && (
+            <div className="mb-2 flex gap-2 items-center">
+              <p className="text-red-500">{error}</p>
+            </div>
+          )}
+
           <div className="mb-6 flex gap-2 items-center">
             <input
               checked={isAdmin}
@@ -83,6 +101,7 @@ const LoginForm = () => {
               Login as Admin
             </label>
           </div>
+
           <button
             type="submit"
             className="w-full bg-primary text-white py-3 rounded-lg mb-4"
