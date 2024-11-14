@@ -1,7 +1,7 @@
 import { useState } from "react";
 import QuizQuestionItem from "./QuizQuestionItem";
 import { useSubmitQuizAttemptMutation } from "../../features/api/QuizTaking/quizTakingApi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import { toast } from "react-toastify";
 
@@ -13,6 +13,8 @@ const QuizQuestions = ({ data, answers, setAnswers }) => {
 
   const [show, setShow] = useState(false);
 
+  const navigate = useNavigate();
+
   const maxIndex = stats?.total_questions - 1;
   const currentQuestion = questions[index];
 
@@ -23,6 +25,7 @@ const QuizQuestions = ({ data, answers, setAnswers }) => {
       .then((data) => {
         if (data?.status === "success") {
           toast.success("Succesfully submitted");
+          navigate(`/result/${quizSetId}`);
         }
       })
       .catch((err) => toast.error(err?.data?.message));

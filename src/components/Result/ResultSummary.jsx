@@ -37,7 +37,6 @@ const ResultSummary = ({ quiz, correct, wrong, marks }) => {
 
               <Link
                 to={`/leaderboard/${id}`}
-                // href="./leaderboard_page.html"
                 className="  py-3 rounded-md  transition-colors text-lg font-medium underline text-white"
               >
                 View Leaderboard
