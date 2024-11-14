@@ -18,6 +18,7 @@ const authApi = apiSlice.injectEndpoints({
         method: "POST",
         body: formData,
       }),
+      invalidatesTags: ["quizAttempt", "quizzes"],
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
@@ -44,7 +45,7 @@ const authApi = apiSlice.injectEndpoints({
               })
             );
           }
-        } catch (err) {
+        } catch (_err) {
           // do nothing
         }
       },

@@ -1,13 +1,17 @@
-import React from "react";
-import JS from "../../assets/cards/js.png";
 import CardItem from "./CardItem";
 import { useGetQuizListQuery } from "../../features/api/QuizTaking/quizTakingApi";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import useLoggedInUser from "../../hooks/useLoggedInUser";
+import { useEffect } from "react";
 
 const CardsContainer = () => {
-  const { data, isLoading, isError, error } = useGetQuizListQuery();
+  const loggedUser = useLoggedInUser();
+  const { data, isLoading, isError, error, refetch } = useGetQuizListQuery();
 
+  useEffect(() => {
+    refetch();
+  }, [loggedUser]);
   const { data: quizList } = data || {};
   if (isLoading) {
     return <LoadingComponent />;

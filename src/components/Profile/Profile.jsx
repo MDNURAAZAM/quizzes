@@ -1,5 +1,4 @@
-import React from "react";
-import Avatar from "../../assets/avater.webp";
+import Avatar from "../../assets/user-avatar.png";
 import { useSelector } from "react-redux";
 
 const Profile = () => {
@@ -9,7 +8,7 @@ const Profile = () => {
       <img
         src={Avatar}
         alt="Profile Picture"
-        className="w-32 h-32 rounded-full border-4 border-primary mx-auto mb-4 object-cover"
+        className="w-32 h-32 rounded-full border-primary mx-auto mb-4 object-cover"
       />
       <p className="text-xl text-gray-600">Welcome</p>
       <h2

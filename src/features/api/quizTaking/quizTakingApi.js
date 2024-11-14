@@ -7,12 +7,16 @@ const quizTakingApi = apiSlice.injectEndpoints({
       query: ({ quizSetId }) => ({
         url: `${baseUrl}/${quizSetId}`,
       }),
+      providesTags: (_result, _error, arg) => [
+        { type: "quizAttempt", id: arg?.quizSetId },
+      ],
     }),
 
     getQuizList: builder.query({
       query: () => ({
         url: baseUrl,
       }),
+      providesTags: ["quizzes"],
     }),
 
     getQuizAttempts: builder.query({
@@ -32,6 +36,7 @@ const quizTakingApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (_result, _error, arg) => [
         { type: "quizAttempt", id: arg?.quizSetId },
+        "quizzes",
       ],
     }),
   }),
