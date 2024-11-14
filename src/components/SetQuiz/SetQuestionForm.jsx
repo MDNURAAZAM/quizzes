@@ -1,5 +1,3 @@
-import React from "react";
-
 const SetQuestionForm = () => {
   return (
     <div className="max-h-screen">

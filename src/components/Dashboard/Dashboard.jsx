@@ -1,4 +1,3 @@
-import React from "react";
 import CreateQuizCard from "./CreateQuizCard";
 import QuizCard from "./QuizCard";
 

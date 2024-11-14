@@ -44,7 +44,7 @@ function App() {
           }
         />
         <Route
-          path="/result"
+          path="/result/:quizSetId"
           element={
             <PrivateRoute>
               <ResultPage />

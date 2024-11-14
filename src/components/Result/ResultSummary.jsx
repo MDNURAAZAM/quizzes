@@ -1,4 +1,3 @@
-import React from "react";
 import CirculurIcon from "../../assets/icons/circular-progressbar.svg";
 
 const ResultSummary = () => {
@@ -34,7 +33,7 @@ const ResultSummary = () => {
 
               <a
                 // href="./leaderboard_page.html"
-                className=" bg-secondary py-3 rounded-md hover:bg-secondary/90 transition-colors text-lg font-medium underline text-white"
+                className="  py-3 rounded-md  transition-colors text-lg font-medium underline text-white"
               >
                 View Leaderboard
               </a>

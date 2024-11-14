@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "../../assets/logo-white.svg";
 import ResultSummary from "./ResultSummary";
 import ResultQuestions from "./ResultQuestions";

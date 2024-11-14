@@ -1,4 +1,4 @@
-import Avatar from "../../assets/avater.webp";
+import Avatar from "../Images/Avatar";
 
 const LeaderBoardProfile = ({ name, mark, correct, wrong, position }) => {
   return (
@@ -7,7 +7,7 @@ const LeaderBoardProfile = ({ name, mark, correct, wrong, position }) => {
         <img
           src={Avatar}
           alt="Profile Pic"
-          className="w-20 h-20 rounded-full border-4 border-white mb-4 object-cover"
+          className="w-20 h-20 rounded-full border-2 border-white mb-4 object-cover"
         />
         <h2 className="text-2xl font-bold">{name}</h2>
         <p className="text-xl">{position} Position</p>

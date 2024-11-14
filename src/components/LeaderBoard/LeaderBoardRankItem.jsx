@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import Avatar from "../../assets/avater.webp";
 import { formatOrdinal } from "../../utils";
+import Avatar from "../Images/Avatar";
 
 const LeaderBoardRankItem = ({ ranking, rank }) => {
   const { user, marks } = ranking || {};

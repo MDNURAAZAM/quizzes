@@ -1,8 +1,9 @@
-import React from "react";
 import Logo from "../../assets/logo-white.svg";
-import Avatar from "../../assets/avater.webp";
+import useLoggedInUser from "../../hooks/useLoggedInUser";
+import Avatar from "../Images/Avatar";
 
 const Sidebar = () => {
+  const loggedInUser = useLoggedInUser();
   return (
     <aside className="w-64 bg-primary p-6 flex flex-col">
       <div className="mb-10">
@@ -60,9 +61,9 @@ const Sidebar = () => {
         <img
           src={Avatar}
           alt="Mr Hasan"
-          className="w-10 h-10 rounded-full mr-3 object-cover"
+          className="w-10 h-10 rounded-full border-2 border-white mr-3 object-cover"
         />
-        <span className="text-white font-semibold">Saad Hasan</span>
+        <span className="text-white font-semibold">{loggedInUser}</span>
       </div>
     </aside>
   );

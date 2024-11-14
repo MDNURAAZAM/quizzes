@@ -1,5 +1,3 @@
-import React from "react";
-
 const Question = () => {
   return (
     <div className="rounded-lg overflow-hidden shadow-sm mb-4">

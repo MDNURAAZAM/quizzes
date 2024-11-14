@@ -45,8 +45,9 @@ const authApi = apiSlice.injectEndpoints({
               })
             );
           }
-        } catch (_err) {
+        } catch (err) {
           // do nothing
+          console.log(err);
         }
       },
     }),

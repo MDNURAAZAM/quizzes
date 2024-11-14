@@ -1,4 +1,3 @@
-import React from "react";
 import RegistrationThumbnail from "./RegistrationThumbnail";
 import RegistrationForm from "./RegistrationForm";
 

@@ -1,5 +1,5 @@
-import Avatar from "../../assets/user-avatar.png";
 import { useSelector } from "react-redux";
+import Avatar from "../Images/Avatar";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth) || {};

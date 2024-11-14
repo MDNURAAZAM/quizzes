@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Avatar from "../../assets/avater.webp";
+import Avatar from "../Images/Avatar";
 
 const QuizSummary = ({ data, participated }) => {
   const { user } = useSelector((state) => state.auth);

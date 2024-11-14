@@ -1,4 +1,3 @@
-import React from "react";
 import CreateSVG from "../SVGs/CreateSVG";
 
 const CreateQuizCard = () => {

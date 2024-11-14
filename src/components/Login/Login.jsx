@@ -1,4 +1,3 @@
-import React from "react";
 import LoginThumbnail from "./LoginThumbnail";
 import LoginForm from "./LoginForm";
 

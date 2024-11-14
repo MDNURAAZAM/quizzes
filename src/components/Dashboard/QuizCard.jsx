@@ -1,4 +1,3 @@
-import React from "react";
 import QuizSVG from "../SVGs/QuizSVG";
 
 const QuizCard = () => {
