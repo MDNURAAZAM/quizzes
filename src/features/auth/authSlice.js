@@ -22,6 +22,7 @@ const authSlice = createSlice({
       state.refreshToken = undefined;
       state.user = undefined;
       apiSlice.util.invalidateTags(["quizAttempt", "quizzes"]);
+      localStorage.removeItem("auth");
     },
   },
 });

@@ -1,6 +1,8 @@
+import { Link, useParams } from "react-router-dom";
 import Avatar from "../Images/Avatar";
 
 const LeaderBoardProfile = ({ name, mark, correct, wrong, position }) => {
+  const { quizSetId } = useParams();
   return (
     <div className="bg-primary rounded-lg p-6 text-white">
       <div className="flex flex-col items-center mb-6">
@@ -25,6 +27,15 @@ const LeaderBoardProfile = ({ name, mark, correct, wrong, position }) => {
           <p className="text-sm opacity-75">Wrong</p>
           <p className="text-2xl font-bold">{wrong}</p>
         </div>
+      </div>
+      <div className="text-center">
+        <Link
+          to={`/result/${quizSetId}`}
+          // href="./leaderboard_page.html"
+          className="  py-3 rounded-md  transition-colors text-lg font-medium underline text-white"
+        >
+          View Result
+        </Link>
       </div>
     </div>
   );

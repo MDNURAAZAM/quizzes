@@ -1,6 +1,8 @@
+import { Link, useParams } from "react-router-dom";
 import CirculurIcon from "../../assets/icons/circular-progressbar.svg";
 
 const ResultSummary = () => {
+  const { quizSetId } = useParams();
   return (
     <div className="max-h-screen overflow-hidden hidden lg:flex lg:w-1/2 bg-primary flex-col justify-center p-12 relative">
       <div>
@@ -31,12 +33,13 @@ const ResultSummary = () => {
                 </div>
               </div>
 
-              <a
+              <Link
+                to={`/leaderboard/${quizSetId}`}
                 // href="./leaderboard_page.html"
                 className="  py-3 rounded-md  transition-colors text-lg font-medium underline text-white"
               >
                 View Leaderboard
-              </a>
+              </Link>
             </div>
 
             <div className="w-1/2 bg-primary/80 rounded-md border border-white/20 flex items-center p-4">

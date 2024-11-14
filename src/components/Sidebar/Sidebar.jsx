@@ -1,9 +1,20 @@
+import { useDispatch } from "react-redux";
 import Logo from "../../assets/logo-white.svg";
 import useLoggedInUser from "../../hooks/useLoggedInUser";
 import Avatar from "../Images/Avatar";
+import { userLoggedOut } from "../../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const loggedInUser = useLoggedInUser();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  //handle logout click
+  const handleLogoutClick = () => {
+    dispatch(userLoggedOut());
+    navigate("/");
+  };
   return (
     <aside className="w-64 bg-primary p-6 flex flex-col">
       <div className="mb-10">
@@ -47,9 +58,9 @@ const Sidebar = () => {
             </a>
           </li>
 
-          <li>
+          <li onClick={handleLogoutClick}>
             <a
-              href="#"
+              href=""
               className="block py-2 px-4 rounded-lg text-gray-100 hover:bg-gray-100 hover:text-primary"
             >
               Logout

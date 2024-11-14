@@ -2,7 +2,7 @@ import CreateSVG from "../SVGs/CreateSVG";
 
 const CreateQuizCard = () => {
   return (
-    <div className="group">
+    <>
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 ">
         <div className="text-buzzr-purple mb-4 group-hover:scale-105 transition-all">
           <CreateSVG />
@@ -14,7 +14,7 @@ const CreateQuizCard = () => {
           Build from the ground up
         </p>
       </div>
-    </div>
+    </>
   );
 };
 
