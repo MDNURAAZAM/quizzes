@@ -1,11 +1,11 @@
+import { useSelector } from "react-redux";
 import Avatar from "../../assets/avater.webp";
-import useLoggedInUser from "../../hooks/useLoggedInUser";
 import { formatOrdinal } from "../../utils";
 
 const LeaderBoardRankItem = ({ ranking, rank }) => {
   const { user, marks } = ranking || {};
-  const loggedInUserName = useLoggedInUser();
-  const isRanked = user?.full_name === loggedInUserName;
+  const { user: loggedInUser } = useSelector((state) => state?.auth);
+  const isRanked = user?.id === loggedInUser.id;
   return (
     <li
       className={`flex items-center justify-between ${isRanked && "bg-green-100 rounded-l-full"}`}

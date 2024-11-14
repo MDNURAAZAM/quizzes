@@ -2,16 +2,16 @@ import CardItem from "./CardItem";
 import { useGetQuizListQuery } from "../../features/api/QuizTaking/quizTakingApi";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
-import useLoggedInUser from "../../hooks/useLoggedInUser";
 import { useEffect } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const CardsContainer = () => {
-  const loggedUser = useLoggedInUser();
+  const isLoggedIn = useAuth();
   const { data, isLoading, isError, error, refetch } = useGetQuizListQuery();
 
   useEffect(() => {
     refetch();
-  }, [loggedUser]);
+  }, [isLoggedIn, refetch]);
   const { data: quizList } = data || {};
   if (isLoading) {
     return <LoadingComponent />;
