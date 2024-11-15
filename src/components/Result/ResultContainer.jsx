@@ -19,16 +19,6 @@ const ResultContainer = () => {
 
   const { attempts, quiz } = data?.data || {};
 
-  console.log(quiz);
-
-  if (isLoading) {
-    return <LoadingComponent />;
-  }
-
-  if (isError) {
-    return <ErrorComponent message={error?.data?.message} />;
-  }
-
   const currentUserAttempt = attempts?.find(
     (attempt) => attempt?.user?.id === user?.id
   );
@@ -42,6 +32,14 @@ const ResultContainer = () => {
   const wrongAnswerCount = correct_answers?.length - correctAnswersCount;
   const totalMarks = getTotalMarks(correctlyAnsweredList);
 
+  if (isLoading) {
+    return <LoadingComponent />;
+  }
+
+  if (isError) {
+    return <ErrorComponent message={error?.data?.message} />;
+  }
+
   return (
     <div className="bg-background text-foreground min-h-screen">
       <div className="flex min-h-screen overflow-hidden">
@@ -54,7 +52,11 @@ const ResultContainer = () => {
           wrong={wrongAnswerCount}
           marks={totalMarks}
         />
-        <ResultQuestions />
+        <ResultQuestions
+          quizSetId={quizSetId}
+          correctAnswers={correct_answers}
+          submittedAnswers={submitted_answers}
+        />
       </div>
     </div>
   );
