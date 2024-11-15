@@ -50,3 +50,12 @@ export function formatOrdinal(number) {
 
   return `${number}${suffixes[lastDigit] || "th"}`;
 }
+
+export const shuffleList = (list = []) => {
+  const copiedList = [...list];
+  for (let i = copiedList.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copiedList[i], copiedList[j]] = [copiedList[j], copiedList[i]];
+  }
+  return copiedList;
+};

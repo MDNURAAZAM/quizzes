@@ -1,4 +1,6 @@
+import { useMemo } from "react";
 import QuizOption from "./QuizOption";
+import { shuffleList } from "../../utils";
 
 const QuizQuestionItem = ({
   currentQuestion,
@@ -8,6 +10,10 @@ const QuizQuestionItem = ({
   disabled,
 }) => {
   const { id, question, options } = currentQuestion || {};
+
+  const shuffleOptions = useMemo(() => {
+    return shuffleList(options);
+  }, [options]);
 
   //handle options selection
   const handleOptionSelect = (value) => {
@@ -27,7 +33,7 @@ const QuizQuestionItem = ({
         </h3>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        {options?.map((option) => (
+        {shuffleOptions?.map((option) => (
           <QuizOption
             key={option}
             text={option}
