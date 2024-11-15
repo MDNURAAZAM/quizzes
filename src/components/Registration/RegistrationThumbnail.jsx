@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-white.svg";
 import SallyImage from "../../assets/Saly-1.png";
 
@@ -5,7 +6,9 @@ const RegistrationThumbnail = () => {
   return (
     <div className="hidden  lg:flex lg:w-1/2 bg-primary flex-col justify-between p-12  h-full fixed left-0 top-0">
       <div className="text-white">
-        <img src={Logo} className="h-8" />
+        <Link to={"/"}>
+          <img src={Logo} className="h-8" />
+        </Link>
 
         <img
           src={SallyImage}
@@ -20,8 +23,8 @@ const RegistrationThumbnail = () => {
         <p className="mb-8 max-w-lg">
           Logging in unlocks your personal progress tracker, letting you
           evaluate your performance and see how you stack up against others.
-          Whether you're preparing for exams, improving your knowledge, or
-          simply having fun, there's no better way to sharpen your mind.
+          Whether you are preparing for exams, improving your knowledge, or
+          simply having fun, there is no better way to sharpen your mind.
         </p>
       </div>
     </div>

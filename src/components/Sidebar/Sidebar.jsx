@@ -3,7 +3,7 @@ import Logo from "../../assets/logo-white.svg";
 import useLoggedInUser from "../../hooks/useLoggedInUser";
 import Avatar from "../Images/Avatar";
 import { userLoggedOut } from "../../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const loggedInUser = useLoggedInUser();
@@ -18,7 +18,9 @@ const Sidebar = () => {
   return (
     <aside className=" bg-primary p-6 flex flex-col">
       <div className="mb-10">
-        <img src={Logo} className="h-7" />
+        <Link to={"/"}>
+          <img src={Logo} className="h-7" />
+        </Link>
       </div>
       <nav className="flex-grow">
         <ul className="space-y-2">
