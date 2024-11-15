@@ -14,7 +14,7 @@ const ResultInstructions = () => {
         <div className="">selected answer</div>
       </div>
       <div className=" flex items-center justify-start gap-2 p-2">
-        <div className="w-5 h-5 rounded-full border bg-red-400"></div>
+        <div className="w-5 h-5 rounded-full border bg-red-300"></div>
         <div className="">wrong answer selected</div>
       </div>
     </div>

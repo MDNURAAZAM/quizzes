@@ -3,10 +3,11 @@ import Sidebar from "../Sidebar/Sidebar";
 
 const AdminContainer = () => {
   return (
-    <div className="bg-gray-100 min-h-screen flex">
+    <div className="bg-gray-100 min-h-screen flex min-w-screen">
       <Sidebar />
-
-      <Outlet />
+      <div className="w-10/12">
+        <Outlet />
+      </div>
     </div>
   );
 };

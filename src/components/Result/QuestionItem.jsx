@@ -3,8 +3,8 @@ import Option from "./Option";
 const QuestionItem = ({
   question,
   count,
-  submittedAnswers,
-  correctAnswers,
+  submittedAnswers = [],
+  correctAnswers = [],
 }) => {
   const { question: title, options, id } = question || {};
 

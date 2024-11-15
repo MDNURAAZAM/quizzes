@@ -1,18 +1,45 @@
-import Sidebar from "../Sidebar/Sidebar";
 import QuestionsContainer from "./QuestionsContainer";
 import SetQuestionForm from "./SetQuestionForm";
 import NavSVG from "../SVGs/NavSVG";
+import { useSelector } from "react-redux";
+import { useGetQuizSetListQuery } from "../../features/api/quizManagement/quizManagementApi";
+import LoadingComponent from "../LoadingComponent/LoadingComponent";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import { Link, useParams } from "react-router-dom";
 
 const SetQuizQuestions = () => {
+  const { quizSetId } = useParams();
+  const { user } = useSelector((state) => state.auth);
+  const { data, isLoading, isError, error } = useGetQuizSetListQuery(
+    undefined,
+    {
+      skip: user?.role !== "admin",
+    }
+  );
+
+  const currentQuiz = data?.find((quiz) => quiz?.id === quizSetId);
+
+  const { Questions, description, title } = currentQuiz || {};
+
+  if (isLoading) {
+    return <LoadingComponent />;
+  }
+
+  if (isError) {
+    return <ErrorComponent message={error?.data?.message} />;
+  }
   return (
-    <main className="max-h-screen overflow-auto md:flex-grow px-4 sm:px-6 lg:px-8 py-8">
+    <main className="max-h-screen  md:flex-grow px-4 sm:px-6 lg:px-8 py-8">
       <div className="max-h-screen">
         <nav className="text-sm mb-4" aria-label="Breadcrumb">
           <ol className="list-none p-0 inline-flex">
             <li className="flex items-center">
-              <a href="#" className="text-gray-600 hover:text-buzzr-purple">
+              <Link
+                to={"/admin"}
+                className="text-gray-600 hover:text-buzzr-purple"
+              >
                 Home
-              </a>
+              </Link>
               <NavSVG />
             </li>
             <li>
@@ -28,8 +55,12 @@ const SetQuizQuestions = () => {
         </nav>
 
         <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-8 lg:gap-12">
-          <SetQuestionForm />
-          <QuestionsContainer />
+          <SetQuestionForm
+            questionsCount={Questions?.length}
+            title={title}
+            description={description}
+          />
+          <QuestionsContainer questions={Questions} />
         </div>
       </div>
     </main>

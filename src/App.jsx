@@ -93,7 +93,7 @@ function App() {
               }
             />
             <Route
-              path="set-quiz-questions"
+              path="set-quiz-entry/:quizSetId"
               element={
                 <PrivateRoute>
                   <SetQuizQuestionsPage />

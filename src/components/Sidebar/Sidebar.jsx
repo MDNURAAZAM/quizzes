@@ -16,7 +16,7 @@ const Sidebar = () => {
     navigate("/");
   };
   return (
-    <aside className="w-64 bg-primary p-6 flex flex-col">
+    <aside className=" bg-primary p-6 flex flex-col">
       <div className="mb-10">
         <img src={Logo} className="h-7" />
       </div>

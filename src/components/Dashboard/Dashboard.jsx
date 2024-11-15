@@ -4,6 +4,7 @@ import CreateQuizCard from "./CreateQuizCard";
 import QuizCard from "./QuizCard";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
@@ -29,9 +30,16 @@ const Dashboard = () => {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <CreateQuizCard />
+        <Link to={"/admin/set-quiz"}>
+          <CreateQuizCard />
+        </Link>
+
         {data?.length > 0 &&
-          data?.map((quiz) => <QuizCard key={quiz?.id} quiz={quiz} />)}
+          data?.map((quiz) => (
+            <Link to={`/admin/set-quiz-entry/${quiz?.id}`} key={quiz?.id}>
+              <QuizCard quiz={quiz} />
+            </Link>
+          ))}
       </div>
     </main>
   );

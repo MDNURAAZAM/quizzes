@@ -1,14 +1,11 @@
-const SetQuestionForm = () => {
+const SetQuestionForm = ({ description, title, questionsCount }) => {
   return (
     <div className="max-h-screen">
-      <h2 className="text-3xl font-bold mb-4">Binary Tree Quiz</h2>
+      <h2 className="text-3xl font-bold mb-4">{title} Quiz</h2>
       <div className="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded-full inline-block mb-4">
-        Total number of questions : 1
+        Total number of questions : {questionsCount}
       </div>
-      <p className="text-gray-600 mb-4">
-        Test understanding of binary tree traversal methods, tree properties,
-        and algorithms.
-      </p>
+      <p className="text-gray-600 mb-4">{description}</p>
 
       <div className="space-y-4">
         <h2 className="text-xl font-bold text-foreground">Create Quiz</h2>
