@@ -8,6 +8,7 @@ const quizManagementApi = apiSlice.injectEndpoints({
       query: () => ({
         url: `${baseUrl}/quizzes`,
       }),
+      providesTags: ["quizzesAdmin"],
     }),
     createQuiz: builder.mutation({
       query: ({ formData }) => ({
@@ -15,6 +16,7 @@ const quizManagementApi = apiSlice.injectEndpoints({
         method: "POST",
         body: formData,
       }),
+      invalidatesTags: ["quizzes"],
     }),
     updateQuiz: builder.mutation({
       query: ({ quizSetId, formData }) => ({
@@ -22,12 +24,14 @@ const quizManagementApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: formData,
       }),
+      invalidatesTags: ["quizzesAdmin"],
     }),
     deleteQuiz: builder.mutation({
       query: ({ quizSetId }) => ({
         url: `${baseUrl}/quizzes/${quizSetId}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["quizzesAdmin"],
     }),
     addQuestion: builder.mutation({
       query: ({ quizSetId, formData }) => ({
@@ -35,6 +39,7 @@ const quizManagementApi = apiSlice.injectEndpoints({
         method: "POST",
         body: formData,
       }),
+      invalidatesTags: ["quizzesAdmin"],
     }),
     updateQuestion: builder.mutation({
       query: ({ questionId, formData }) => ({
@@ -42,12 +47,14 @@ const quizManagementApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: formData,
       }),
+      invalidatesTags: ["quizzesAdmin"],
     }),
     deleteQuestion: builder.mutation({
       query: ({ questionId }) => ({
         url: `${baseUrl}/questions/${questionId}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["quizzesAdmin"],
     }),
   }),
 });

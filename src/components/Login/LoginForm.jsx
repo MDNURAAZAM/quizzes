@@ -8,7 +8,6 @@ const LoginForm = () => {
   const [loginUser] = useLoginUserMutation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
 
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -16,7 +15,6 @@ const LoginForm = () => {
   const resetForm = () => {
     setEmail("");
     setPassword("");
-    setIsAdmin(false);
   };
 
   const handleSubmit = (e) => {
@@ -25,7 +23,6 @@ const LoginForm = () => {
     const formData = {
       email,
       password,
-      role: isAdmin ? "admin" : "user",
     };
     loginUser({ formData })
       .unwrap()
@@ -88,7 +85,7 @@ const LoginForm = () => {
             </div>
           )}
 
-          <div className="mb-6 flex gap-2 items-center">
+          {/* <div className="mb-6 flex gap-2 items-center">
             <input
               checked={isAdmin}
               onChange={(e) => setIsAdmin(e.target.checked)}
@@ -99,7 +96,7 @@ const LoginForm = () => {
             <label htmlFor="admin" className="block ">
               Login as Admin
             </label>
-          </div>
+          </div> */}
 
           <button
             type="submit"

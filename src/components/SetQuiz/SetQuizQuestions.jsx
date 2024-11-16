@@ -1,5 +1,5 @@
 import QuestionsContainer from "./QuestionsContainer";
-import SetQuestionForm from "./SetQuestionForm";
+import SetQuestionContainer from "./SetQuestionContainer";
 import NavSVG from "../SVGs/NavSVG";
 import { useSelector } from "react-redux";
 import { useGetQuizSetListQuery } from "../../features/api/quizManagement/quizManagementApi";
@@ -55,7 +55,7 @@ const SetQuizQuestions = () => {
         </nav>
 
         <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-8 lg:gap-12">
-          <SetQuestionForm
+          <SetQuestionContainer
             questionsCount={Questions?.length}
             title={title}
             description={description}

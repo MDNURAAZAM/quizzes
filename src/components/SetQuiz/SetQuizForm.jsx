@@ -42,6 +42,7 @@ const SetQuizForm = () => {
           Quiz title
         </label>
         <input
+          required
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
