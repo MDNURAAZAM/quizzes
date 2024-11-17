@@ -5,6 +5,7 @@ import {
   useAddQuestionMutation,
   useUpdateQuestionMutation,
 } from "../../features/api/quizManagement/quizManagementApi";
+import { isOptionsDifferent } from "../../utils";
 
 const SetQuestionForm = ({ editQuestion, setEditQuestionId }) => {
   const [updateQuestion, { isLoading: updateLoading }] =
@@ -63,38 +64,42 @@ const SetQuestionForm = ({ editQuestion, setEditQuestionId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (correctAnswer) {
-      const formData = {
-        question: title,
-        options: Object.values(options),
-        correctAnswer: options[correctAnswer],
-      };
-      if (editQuestion) {
-        //for edit mode
-        updateQuestion({ questionId: editQuestion?.id, formData })
-          .unwrap()
-          .then((data) => {
-            if (data?.status === "success") {
-              resetForm();
-              setEditQuestionId(null);
-              toast.success("Question updated succesfully");
-            }
-          })
-          .catch((err) => toast.error(err?.data?.message || "error occured"));
+    if (isOptionsDifferent(Object?.values(options))) {
+      if (correctAnswer) {
+        const formData = {
+          question: title,
+          options: Object.values(options),
+          correctAnswer: options[correctAnswer],
+        };
+        if (editQuestion) {
+          //for edit mode
+          updateQuestion({ questionId: editQuestion?.id, formData })
+            .unwrap()
+            .then((data) => {
+              if (data?.status === "success") {
+                resetForm();
+                setEditQuestionId(null);
+                toast.success("Question updated succesfully");
+              }
+            })
+            .catch((err) => toast.error(err?.data?.message || "error occured"));
+        } else {
+          // for add mode
+          addQuestion({ quizSetId, formData })
+            .unwrap()
+            .then((data) => {
+              if (data?.status === "success") {
+                resetForm();
+                toast.success("Question added succesfully");
+              }
+            })
+            .catch((err) => toast.error(err?.data?.message || "error occured"));
+        }
       } else {
-        // for add mode
-        addQuestion({ quizSetId, formData })
-          .unwrap()
-          .then((data) => {
-            if (data?.status === "success") {
-              resetForm();
-              toast.success("Question added succesfully");
-            }
-          })
-          .catch((err) => toast.error(err?.data?.message || "error occured"));
+        toast.error("Please select a correct answer");
       }
     } else {
-      toast.error("Please select a correct answer");
+      toast.error("Please enter unique options");
     }
   };
 

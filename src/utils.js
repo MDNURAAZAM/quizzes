@@ -59,3 +59,8 @@ export const shuffleList = (list = []) => {
   }
   return copiedList;
 };
+
+export const isOptionsDifferent = (options = []) => {
+  const uniqueItems = new Set(options);
+  return uniqueItems.size === options.length;
+};
