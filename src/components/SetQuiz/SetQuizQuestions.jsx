@@ -6,6 +6,7 @@ import { useGetQuizSetListQuery } from "../../features/api/quizManagement/quizMa
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 
 const SetQuizQuestions = () => {
   const { quizSetId } = useParams();
@@ -17,7 +18,13 @@ const SetQuizQuestions = () => {
     }
   );
 
+  const [editQuestionId, setEditQuestionId] = useState(null);
   const currentQuiz = data?.find((quiz) => quiz?.id === quizSetId);
+  const editQuestion = editQuestionId
+    ? currentQuiz?.Questions?.find(
+        (question) => question?.id === editQuestionId
+      )
+    : null;
 
   const { Questions, description, title } = currentQuiz || {};
 
@@ -59,8 +66,13 @@ const SetQuizQuestions = () => {
             questionsCount={Questions?.length}
             title={title}
             description={description}
+            editQuestion={editQuestion}
+            setEditQuestionId={setEditQuestionId}
           />
-          <QuestionsContainer questions={Questions} />
+          <QuestionsContainer
+            questions={Questions}
+            onEdit={(id) => setEditQuestionId(id)}
+          />
         </div>
       </div>
     </main>

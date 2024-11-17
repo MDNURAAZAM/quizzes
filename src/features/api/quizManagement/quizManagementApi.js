@@ -66,4 +66,5 @@ export const {
   useDeleteQuestionMutation,
   useDeleteQuizMutation,
   useUpdateQuizMutation,
+  useUpdateQuestionMutation,
 } = quizManagementApi;

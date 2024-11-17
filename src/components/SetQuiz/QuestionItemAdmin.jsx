@@ -4,13 +4,12 @@ import OptionAdmin from "./OptionAdmin";
 import { useDeleteQuestionMutation } from "../../features/api/quizManagement/quizManagementApi";
 import { toast } from "react-toastify";
 
-const QuestionItemAdmin = ({ question, count }) => {
+const QuestionItemAdmin = ({ question, count, onEdit }) => {
   const [deleteQuestion, { isLoading }] = useDeleteQuestionMutation();
   const { question: title, options, correctAnswer, id } = question || {};
   const [show, setShow] = useState(false);
 
   const handleDelete = () => {
-    console.log(question);
     deleteQuestion({ questionId: id })
       .unwrap()
       .then((data) => {
@@ -23,6 +22,10 @@ const QuestionItemAdmin = ({ question, count }) => {
       );
     setShow(false);
   };
+  const handleEdit = () => {
+    onEdit(id);
+  };
+
   return (
     <>
       {show && (
@@ -57,7 +60,10 @@ const QuestionItemAdmin = ({ question, count }) => {
             >
               Delete
             </button>
-            <button className="text-primary hover:text-primary/80 font-medium">
+            <button
+              onClick={handleEdit}
+              className="text-primary hover:text-primary/80 font-medium"
+            >
               Edit Question
             </button>
           </div>

@@ -1,6 +1,12 @@
 import SetQuestionForm from "./SetQuestionForm";
 
-const SetQuestionContainer = ({ description, title, questionsCount }) => {
+const SetQuestionContainer = ({
+  editQuestion,
+  description,
+  title,
+  questionsCount,
+  setEditQuestionId,
+}) => {
   return (
     <div className="max-h-screen">
       <h2 className="text-3xl font-bold mb-4">{title} Quiz</h2>
@@ -9,7 +15,10 @@ const SetQuestionContainer = ({ description, title, questionsCount }) => {
       </div>
       <p className="text-gray-600 mb-4">{description}</p>
 
-      <SetQuestionForm />
+      <SetQuestionForm
+        editQuestion={editQuestion}
+        setEditQuestionId={setEditQuestionId}
+      />
     </div>
   );
 };

@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
-import { useAddQuestionMutation } from "../../features/api/quizManagement/quizManagementApi";
+import {
+  useAddQuestionMutation,
+  useUpdateQuestionMutation,
+} from "../../features/api/quizManagement/quizManagementApi";
 
-const SetQuestionForm = () => {
+const SetQuestionForm = ({ editQuestion, setEditQuestionId }) => {
+  const [updateQuestion, { isLoading: updateLoading }] =
+    useUpdateQuestionMutation();
+
   const { quizSetId } = useParams();
   const [addQuestion, { isLoading }] = useAddQuestionMutation();
   const [title, setTitle] = useState("");
@@ -15,6 +21,27 @@ const SetQuestionForm = () => {
   });
   const [correctAnswer, setCorrectAnswer] = useState("");
 
+  //set values if in edit mode
+  useEffect(() => {
+    if (editQuestion) {
+      const {
+        question,
+        correctAnswer: correct,
+        options: editOptions,
+      } = editQuestion || {};
+      const correctAnswerIndex =
+        editOptions?.findIndex((opt) => opt === correct) + 1;
+      setTitle(question);
+      setCorrectAnswer(`option${correctAnswerIndex}`);
+      setOptions({
+        option1: editOptions[0],
+        option2: editOptions[1],
+        option3: editOptions[2],
+        option4: editOptions[3],
+      });
+    }
+  }, [editQuestion]);
+
   const handleOptionsChange = ({ name, value }) => {
     setOptions((prev) => ({ ...prev, [name]: value }));
   };
@@ -22,6 +49,7 @@ const SetQuestionForm = () => {
   const handleOptionsSelect = (value) => {
     setCorrectAnswer((prev) => (prev === value ? "" : value));
   };
+
   const resetForm = () => {
     setTitle("");
     setOptions({
@@ -41,15 +69,30 @@ const SetQuestionForm = () => {
         options: Object.values(options),
         correctAnswer: options[correctAnswer],
       };
-      addQuestion({ quizSetId, formData })
-        .unwrap()
-        .then((data) => {
-          if (data?.status === "success") {
-            resetForm();
-            toast.success("Question added succesfully");
-          }
-        })
-        .catch((err) => console.log(err));
+      if (editQuestion) {
+        //for edit mode
+        updateQuestion({ questionId: editQuestion?.id, formData })
+          .unwrap()
+          .then((data) => {
+            if (data?.status === "success") {
+              resetForm();
+              setEditQuestionId(null);
+              toast.success("Question updated succesfully");
+            }
+          })
+          .catch((err) => toast.error(err?.data?.message || "error occured"));
+      } else {
+        // for add mode
+        addQuestion({ quizSetId, formData })
+          .unwrap()
+          .then((data) => {
+            if (data?.status === "success") {
+              resetForm();
+              toast.success("Question added succesfully");
+            }
+          })
+          .catch((err) => toast.error(err?.data?.message || "error occured"));
+      }
     } else {
       toast.error("Please select a correct answer");
     }
@@ -181,11 +224,11 @@ const SetQuestionForm = () => {
           </div>
         </div>
         <button
-          disabled={isLoading}
+          disabled={isLoading || updateLoading}
           type="submit"
           className="w-full my-3 bg-primary text-white text-primary-foreground p-2 rounded-md hover:bg-primary/90 transition-colors"
         >
-          Save Quiz
+          {editQuestion ? "Edit Quiz" : "Save Quiz"}
         </button>
       </form>
     </div>
