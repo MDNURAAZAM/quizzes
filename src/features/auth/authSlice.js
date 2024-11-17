@@ -15,13 +15,13 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.user = action.payload.user;
-      apiSlice.util.invalidateTags(["quizAttempt", "quizzes"]);
+      apiSlice.util.invalidateTags(["quizAttempt", "quizzes", "quizzesAdmin"]);
     },
     userLoggedOut: (state) => {
       state.accessToken = undefined;
       state.refreshToken = undefined;
       state.user = undefined;
-      apiSlice.util.invalidateTags(["quizAttempt", "quizzes"]);
+      apiSlice.util.invalidateTags(["quizAttempt", "quizzes", "quizzesAdmin"]);
       localStorage.removeItem("auth");
     },
   },
