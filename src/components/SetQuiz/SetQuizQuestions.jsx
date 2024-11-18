@@ -26,7 +26,7 @@ const SetQuizQuestions = () => {
       )
     : null;
 
-  const { Questions, description, title } = currentQuiz || {};
+  const { Questions, description, title, status } = currentQuiz || {};
 
   if (isLoading) {
     return <LoadingComponent />;
@@ -68,6 +68,7 @@ const SetQuizQuestions = () => {
             description={description}
             editQuestion={editQuestion}
             setEditQuestionId={setEditQuestionId}
+            isPublished={status === "published"}
           />
           <QuestionsContainer
             questions={Questions}
