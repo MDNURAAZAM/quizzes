@@ -10,7 +10,7 @@ const ResultSummary = ({ quiz, correct, wrong, marks }) => {
       <div>
         <div className="text-white">
           <div>
-            <h2 className="text-4xl font-bold mb-2">{title} Quiz</h2>
+            <h2 className="text-4xl font-bold mb-2">{title}</h2>
             <p>{description}</p>
           </div>
 

@@ -11,13 +11,13 @@ const QuizCard = ({ quiz }) => {
         <div className="flex items-center justify-between">
           <QuizSVG />
           <div className="flex items-center justify-between gap-2">
-            <QuizEditContainer />
+            <QuizEditContainer quiz={quiz} />
             <QuizDeleteContainer quizSetId={id} />
           </div>
         </div>
       </div>
       <h3 className="font-semibold text-lg mb-2 group-hover:scale-105 transition-all">
-        {title} Quiz
+        {title}
       </h3>
       <p className=" text-gray-600 text-sm group-hover:scale-105 transition-all">
         {description}

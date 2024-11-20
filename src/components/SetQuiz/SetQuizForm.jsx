@@ -56,9 +56,10 @@ const SetQuizForm = () => {
           htmlFor="quiz-description"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          Description (Optional)
+          Description
         </label>
         <textarea
+          required
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows="4"

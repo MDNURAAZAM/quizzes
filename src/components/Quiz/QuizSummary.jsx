@@ -7,7 +7,7 @@ const QuizSummary = ({ data, participated }) => {
   return (
     <div className="lg:col-span-1 bg-white rounded-md p-6 h-full flex flex-col">
       <div>
-        <h2 className="text-4xl font-bold mb-4">{title} Quiz</h2>
+        <h2 className="text-4xl font-bold mb-4">{title}</h2>
         <p className="text-gray-600 mb-4">{description}</p>
 
         <div className="flex flex-col">

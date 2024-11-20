@@ -5,7 +5,7 @@ const LeaderBoardRankings = ({ quiz, rankings }) => {
   return (
     <div>
       <h1 className="text-2xl font-bold">Leaderboard</h1>
-      <p className="mb-6">{title} Quiz</p>
+      <p className="mb-6">{title}</p>
       <ul className="space-y-4">
         {rankings?.slice(0, 5)?.map((ranking, index) => (
           <LeaderBoardRankItem

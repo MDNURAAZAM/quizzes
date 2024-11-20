@@ -12,7 +12,7 @@ const SetQuestionContainer = ({
   return (
     <div className="max-h-screen">
       <div className="flex items-center justify-between pr-3">
-        <h2 className="text-3xl font-bold mb-4">{title} Quiz</h2>
+        <h2 className="text-3xl font-bold mb-4">{title}</h2>
         {questionsCount > 0 && (
           <PublishButton
             isPublished={isPublished}
