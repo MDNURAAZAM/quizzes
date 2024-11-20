@@ -45,7 +45,7 @@ const LeaderBoardContainer = () => {
   const correctAnswersCount = correctlyAnsweredList?.length;
   const wrongAnswerCount = correct_answers?.length - correctAnswersCount;
   const totalMarks = getTotalMarks(correctlyAnsweredList);
-  const rank = rankings?.findIndex((rank) => rank?.user?.id === user?.id) + 1;
+  const rank = rankings?.find((rank) => rank?.user?.id === user?.id)?.rank;
 
   return (
     <div className="bg-[#F5F3FF]  p-4">

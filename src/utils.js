@@ -36,7 +36,25 @@ export const getRankingsList = (attempts = []) => {
     };
   });
 
-  return rankingArray?.sort((a, b) => b?.marks - a?.marks);
+  const marksData = rankingArray?.map((data) => data?.marks);
+  const sortedUniqueMarks = [...new Set(marksData)]?.sort(
+    (a, b) => parseInt(b) - parseInt(a)
+  );
+
+  // console.log(sortedUniqueMarks?.sort((a, b) => b - a));
+  const rankedData = rankingArray
+    .slice() // Create a copy to avoid mutating the original
+    .sort((a, b) => b?.marks - a?.marks)
+    .map((item) => {
+      const rank =
+        sortedUniqueMarks?.findIndex((mark) => mark === item?.marks) + 1;
+      return {
+        ...item,
+        rank,
+      };
+    });
+
+  return rankedData;
 };
 
 export function formatOrdinal(number) {

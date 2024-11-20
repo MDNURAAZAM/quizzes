@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { formatOrdinal } from "../../utils";
 import Avatar from "../Images/Avatar";
 
-const LeaderBoardRankItem = ({ ranking, rank }) => {
-  const { user, marks } = ranking || {};
+const LeaderBoardRankItem = ({ ranking }) => {
+  const { user, marks, rank } = ranking || {};
   const { user: loggedInUser } = useSelector((state) => state?.auth);
   const isRanked = user?.id === loggedInUser.id;
   return (
