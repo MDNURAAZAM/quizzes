@@ -4,7 +4,7 @@ import CreateQuizCard from "./CreateQuizCard";
 import QuizCard from "./QuizCard";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
@@ -14,6 +14,11 @@ const Dashboard = () => {
       skip: user?.role !== "admin",
     }
   );
+
+  const navigate = useNavigate();
+  const handleQuizCardClick = (id) => {
+    navigate(`/admin/set-quiz-entry/${id}`);
+  };
 
   if (isLoading) {
     return <LoadingComponent />;
@@ -36,9 +41,9 @@ const Dashboard = () => {
 
         {data?.length > 0 &&
           data?.map((quiz) => (
-            <Link to={`/admin/set-quiz-entry/${quiz?.id}`} key={quiz?.id}>
+            <div onClick={() => handleQuizCardClick(quiz?.id)} key={quiz?.id}>
               <QuizCard quiz={quiz} />
-            </Link>
+            </div>
           ))}
       </div>
     </main>

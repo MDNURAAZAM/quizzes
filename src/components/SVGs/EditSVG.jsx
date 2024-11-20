@@ -1,8 +1,8 @@
 const EditSVG = () => {
   return (
     <svg
-      width="25"
-      height="25"
+      width="20"
+      height="20"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
