@@ -8,7 +8,7 @@ const LeaderBoardRankItem = ({ ranking }) => {
   const isRanked = user?.id === loggedInUser.id;
   return (
     <li
-      className={`flex items-center justify-between ${isRanked && "bg-green-100 rounded-l-full"}`}
+      className={`flex items-center justify-between ${isRanked && "bg-green-100 rounded-l-full border border-primary"}`}
     >
       <div className="flex items-center">
         <img
