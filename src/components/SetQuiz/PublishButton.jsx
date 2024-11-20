@@ -34,7 +34,7 @@ const PublishButton = ({ isPublished, description, title }) => {
     setIsChecked(isPublished);
   }, [isPublished]);
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex items-center justify-center gap-4 pb-3">
       <Switch
         disabled={isLoading}
         onColor="#28194b"

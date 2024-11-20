@@ -8,10 +8,10 @@ import {
 import { isOptionsDifferent } from "../../utils";
 
 const SetQuestionForm = ({ editQuestion, setEditQuestionId }) => {
+  const { quizSetId } = useParams();
   const [updateQuestion, { isLoading: updateLoading }] =
     useUpdateQuestionMutation();
 
-  const { quizSetId } = useParams();
   const [addQuestion, { isLoading }] = useAddQuestionMutation();
   const [title, setTitle] = useState("");
   const [options, setOptions] = useState({

@@ -1,26 +1,6 @@
 import CardItem from "./CardItem";
-import { useGetQuizListQuery } from "../../features/api/QuizTaking/quizTakingApi";
-import LoadingComponent from "../LoadingComponent/LoadingComponent";
-import ErrorComponent from "../ErrorComponent/ErrorComponent";
-import { useEffect } from "react";
-import useAuth from "../../hooks/useAuth";
 
-const CardsContainer = () => {
-  const isLoggedIn = useAuth();
-  const { data, isLoading, isError, error, refetch } = useGetQuizListQuery();
-
-  useEffect(() => {
-    refetch();
-  }, [isLoggedIn, refetch]);
-  const { data: quizList } = data || {};
-  if (isLoading) {
-    return <LoadingComponent />;
-  }
-
-  if (isError) {
-    return <ErrorComponent message={error?.data?.message} />;
-  }
-
+const CardsContainer = ({ quizList }) => {
   return (
     <main className="bg-white p-6 rounded-md h-full">
       <section>

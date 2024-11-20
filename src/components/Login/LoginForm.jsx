@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "../../assets/logo.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../features/api/auth/authApi";
 import { toast } from "react-toastify";
 
@@ -10,7 +10,11 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
+
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const resetForm = () => {
     setEmail("");
@@ -30,7 +34,7 @@ const LoginForm = () => {
         if (data?.status === "success") {
           resetForm();
           toast.success("User logged in succesfully");
-          navigate("/");
+          navigate(from);
         }
       })
       .catch(() => setError("Invalid email or password"));
@@ -46,7 +50,7 @@ const LoginForm = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="username" className="block mb-2">
+            <label htmlFor="email" className="block mb-2">
               Enter your username or email address
             </label>
             <input
@@ -56,8 +60,8 @@ const LoginForm = () => {
                 setError("");
                 setEmail(e.target.value);
               }}
-              type="text"
-              id="username"
+              type="email"
+              id="email"
               className="w-full px-4 py-3 rounded-lg border border-gray-300"
               placeholder="Username or email address"
             />
