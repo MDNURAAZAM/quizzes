@@ -1,5 +1,6 @@
 import useAuth from "../../hooks/useAuth";
 import CardItem from "./CardItem";
+import Logo from "../../assets/logo.svg";
 
 const CardsContainer = ({ quizList }) => {
   const isLoggedIn = useAuth();
@@ -22,11 +23,11 @@ const CardsContainer = ({ quizList }) => {
     <div
       className={`bg-[#F5F3FF] flex items-center justify-center ${isLoggedIn ? "h-[35vh]" : "h-[78vh]"}`}
     >
-      <p className="text-2xl">
-        Sorry, there are no{" "}
-        <span className="text-secondary font-extrabold px-1">Quizzes</span>{" "}
-        available.
-      </p>
+      <p className="text-2xl">Sorry, there are no </p>
+
+      <img src={Logo} className="h-5 px-2" />
+
+      <p className="text-2xl"> available.</p>
     </div>
   );
 };
