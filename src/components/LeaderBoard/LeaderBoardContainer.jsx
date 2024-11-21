@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useGetQuizAttemptsQuery } from "../../features/api/QuizTaking/quizTakingApi";
+
 import {
   getCorrectlyAnsweredList,
   getRankingsList,
@@ -11,6 +11,7 @@ import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import LeaderBoardProfile from "./LeaderBoardProfile";
 import LeaderBoardRankings from "./LeaderBoardRankings";
 import { useParams } from "react-router-dom";
+import { useGetQuizAttemptsQuery } from "../../features/api/QuizTaking/quizTakingApi";
 
 const LeaderBoardContainer = () => {
   const { user } = useSelector((state) => state?.auth);
