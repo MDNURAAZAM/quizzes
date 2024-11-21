@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import { useEffect, useState } from "react";
-import { useGetQuizDetailsQuery } from "../../features/api/QuizTaking/quizTakingApi";
+import { useGetQuizDetailsQuery } from "../../features/api/quizTaking/quizTakingApi";
 
 const QuizContainer = () => {
   const { quizSetId } = useParams();

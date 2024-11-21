@@ -1,4 +1,4 @@
-import { useGetQuizDetailsQuery } from "../../features/api/QuizTaking/quizTakingApi";
+import { useGetQuizDetailsQuery } from "../../features/api/quizTaking/quizTakingApi";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import QuestionItem from "./QuestionItem";

@@ -11,7 +11,7 @@ import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import LeaderBoardProfile from "./LeaderBoardProfile";
 import LeaderBoardRankings from "./LeaderBoardRankings";
 import { useParams } from "react-router-dom";
-import { useGetQuizAttemptsQuery } from "../../features/api/QuizTaking/quizTakingApi";
+import { useGetQuizAttemptsQuery } from "../../features/api/quizTaking/quizTakingApi";
 
 const LeaderBoardContainer = () => {
   const { user } = useSelector((state) => state?.auth);

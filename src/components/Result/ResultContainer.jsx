@@ -3,7 +3,7 @@ import ResultSummary from "./ResultSummary";
 import ResultQuestions from "./ResultQuestions";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useGetQuizAttemptsQuery } from "../../features/api/QuizTaking/quizTakingApi";
+import { useGetQuizAttemptsQuery } from "../../features/api/quizTaking/quizTakingApi";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import { getCorrectlyAnsweredList, getTotalMarks } from "../../utils";

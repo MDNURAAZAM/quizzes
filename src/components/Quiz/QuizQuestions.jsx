@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QuizQuestionItem from "./QuizQuestionItem";
-import { useSubmitQuizAttemptMutation } from "../../features/api/QuizTaking/quizTakingApi";
+import { useSubmitQuizAttemptMutation } from "../../features/api/quizTaking/quizTakingApi";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import { toast } from "react-toastify";

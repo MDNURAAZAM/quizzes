@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect } from "react";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
-import { useGetQuizListQuery } from "../../features/api/QuizTaking/quizTakingApi";
+import { useGetQuizListQuery } from "../../features/api/quizTaking/quizTakingApi";
 
 const HomeContainer = () => {
   const isLoggedIn = useAuth();

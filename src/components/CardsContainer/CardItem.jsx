@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useGetQuizDetailsQuery } from "../../features/api/QuizTaking/quizTakingApi";
+import { useGetQuizDetailsQuery } from "../../features/api/quizTaking/quizTakingApi";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import useAuth from "../../hooks/useAuth";
