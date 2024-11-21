@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import Avatar from "../Images/Avatar";
+import { formatOrdinal } from "../../utils";
 
 const LeaderBoardProfile = ({ name, mark, correct, wrong, position }) => {
   const { quizSetId } = useParams();
@@ -12,7 +13,7 @@ const LeaderBoardProfile = ({ name, mark, correct, wrong, position }) => {
           className="w-20 h-20 rounded-full border-2 border-white mb-4 object-cover"
         />
         <h2 className="text-2xl font-bold">{name}</h2>
-        <p className="text-xl">{position} Position</p>
+        <p className="text-xl">{formatOrdinal(position)} Position</p>
       </div>
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="text-center">
