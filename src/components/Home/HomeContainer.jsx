@@ -3,10 +3,10 @@ import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import CardsContainer from "../CardsContainer/CardsContainer";
 import useAuth from "../../hooks/useAuth";
-import { useGetQuizListQuery } from "../../features/api/QuizTaking/quizTakingApi";
 import { useEffect } from "react";
 import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
+import { useGetQuizListQuery } from "../../features/api/QuizTaking/quizTakingApi";
 
 const HomeContainer = () => {
   const isLoggedIn = useAuth();
