@@ -63,10 +63,12 @@ const CardItem = ({ quiz }) => {
         <img
           src={BG}
           alt={title}
-          className={`w-full h-full object-cover rounded mb-4 ${!quizDone && "transition-all group-hover:scale-105"}`}
+          className={`w-full h-full object-cover rounded mb-4 `}
         />
         {title && (
-          <h3 className=" absolute mx-auto bottom-2/4 right-1/4 text-4xl font-extrabold text-white text-center max-w-[50%]">
+          <h3
+            className={`${!quizDone && "transition-all group-hover:scale-105"} absolute mx-auto bottom-2/4 right-1/4 text-4xl font-extrabold text-white text-center max-w-[50%]`}
+          >
             {title}
           </h3>
         )}
