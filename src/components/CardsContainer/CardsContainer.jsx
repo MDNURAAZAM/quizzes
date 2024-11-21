@@ -21,7 +21,7 @@ const CardsContainer = ({ quizList }) => {
     </main>
   ) : (
     <div
-      className={`bg-[#F5F3FF] flex items-center justify-center ${isLoggedIn ? "h-[35vh]" : "h-[78vh]"}`}
+      className={`bg-[#F5F3FF] flex items-center justify-center ${isLoggedIn ? "h-[40vh]" : "h-[78vh]"}`}
     >
       <p className="text-2xl">Sorry, there are no </p>
 
