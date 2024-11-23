@@ -4,12 +4,11 @@ import LoadingComponent from "../LoadingComponent/LoadingComponent";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import BG from "../../assets/backgrounds/1.jpeg";
 
 const CardItem = ({ quiz }) => {
   const isLoggedIn = useAuth();
 
-  const { is_attempted, title, id } = quiz || {};
+  const { is_attempted, title, id, thumbnail, description } = quiz || {};
 
   const { data, isLoading, isError, error } = useGetQuizDetailsQuery(
     { quizSetId: id },
@@ -61,17 +60,25 @@ const CardItem = ({ quiz }) => {
 
       <div onClick={handleQuizClick}>
         <img
-          src={BG}
+          src={thumbnail}
           alt={title}
-          className={`w-full h-full object-cover rounded mb-4 `}
+          className={`w-full h-full object-cover rounded mb-4`}
         />
-        {title && (
-          <h3
-            className={`${!quizDone && "transition-all group-hover:scale-105"} absolute mx-auto bottom-2/4 right-1/4 text-4xl font-extrabold text-white text-center max-w-[50%]`}
+        <div className="absolute top-[30%] text-center">
+          {title && (
+            <h3
+              style={{ fontFamily: "Jaro" }}
+              className={`${!quizDone && "transition-all group-hover:scale-105"} text-6xl text-white`}
+            >
+              {title}
+            </h3>
+          )}
+          <p
+            className={`${!quizDone && "transition-all group-hover:scale-105"} text-xl text-white mt-6`}
           >
-            {title}
-          </h3>
-        )}
+            {description}
+          </p>
+        </div>
       </div>
     </div>
   );
