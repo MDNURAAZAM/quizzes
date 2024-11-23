@@ -64,17 +64,17 @@ const CardItem = ({ quiz }) => {
           alt={title}
           className={`w-full h-full object-cover rounded mb-4`}
         />
-        <div className="absolute top-[30%] text-center">
+        <div className="absolute top-[30%] text-center text-white">
           {title && (
             <h3
               style={{ fontFamily: "Jaro" }}
-              className={`${!quizDone && "transition-all group-hover:scale-105"} text-6xl text-white`}
+              className={`${!quizDone && "transition-all group-hover:scale-105"} text-6xl `}
             >
               {title}
             </h3>
           )}
           <p
-            className={`${!quizDone && "transition-all group-hover:scale-105"} text-xl text-white mt-6`}
+            className={`${!quizDone && "transition-all group-hover:scale-105"} text-xl  mt-2 p-2`}
           >
             {description}
           </p>
