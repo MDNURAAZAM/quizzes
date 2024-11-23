@@ -33,16 +33,24 @@ const QuizQuestions = ({ data, answers, setAnswers }) => {
   };
 
   const handleNextClick = () => {
-    if (index < maxIndex) {
-      setIndex((prev) => prev + 1);
+    if (answers[currentQuestion?.id]?.length > 0) {
+      if (index < maxIndex) {
+        setIndex((prev) => prev + 1);
+      } else {
+        setShow(true);
+      }
     } else {
-      setShow(true);
+      toast.error("Please select an answer to continue");
     }
   };
 
   const handleBackClick = () => {
-    if (index >= 0) {
-      setIndex((prev) => prev - 1);
+    if (answers[currentQuestion?.id]?.length > 0) {
+      if (index >= 0) {
+        setIndex((prev) => prev - 1);
+      }
+    } else {
+      toast.error("Please select an answer to continue");
     }
   };
 
